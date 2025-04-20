@@ -107,15 +107,13 @@ HashMap *createMap(long capacity) {
     return map;
 }
 
-// Función para borrar un par (clave-valor) del mapa
+// Función para eliminar una key de la tabla y su valor
 void eraseMap(HashMap * map, char * key) {    
     Pair * pair = searchMap(map, key);
 
     if (pair != NULL) {
-        free(pair->key);  // Liberar la memoria de la clave si fue asignada dinámicamente.
-        free(pair);       // Liberar la memoria del par (Pair).
-        map->buckets[map->current] = NULL;  // Marcar el bucket como NULL (eliminación efectiva).
-        map->size--;  // Disminuir el tamaño de la tabla.
+        map->size--;
+        free(pair->key); 
     }
 }
 
