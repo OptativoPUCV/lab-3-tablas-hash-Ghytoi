@@ -115,7 +115,7 @@ void eraseMap(HashMap * map, char * key) {
         Pair * pair = searchMap(map, key);
 
         if (pair != NULL) {
-            map->buckets[] = NULL; 
+            map->buckets[map->current] = NULL; 
             map->size--;
             free(pair); 
         }
