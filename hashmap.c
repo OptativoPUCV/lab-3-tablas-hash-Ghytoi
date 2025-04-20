@@ -115,10 +115,10 @@ void eraseMap(HashMap * map, char * key) {
         Pair * pair = searchMap(map, key);
 
         if (pair != NULL) {
-            map->buckets[map->current] = NULL; 
-            map->size--;
-            free(pair->key);
-            free(pair->value); 
+            pair->key = NULL;
+            pair->value = NULL;
+            //map->buckets[map->current] = NULL; 
+            //map->size--;
         }
     }
 }
