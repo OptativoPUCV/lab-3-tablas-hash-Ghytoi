@@ -108,35 +108,17 @@ HashMap *createMap(long capacity) {
 }
 
 // Función para borrar un par (clave-valor) del mapa
-void eraseMap(HashMap * map, char * key) {
-    // Primero, buscamos el par correspondiente
+void eraseMap(HashMap * map, char * key) {    
     Pair * pair = searchMap(map, key);
 
     if (pair != NULL) {
-        // Liberamos la memoria de la clave (si fue asignada dinámicamente)
-        free(pair->key);  // Solo si la clave se asignó con malloc o strdup
-        free(pair);       // Liberamos la memoria del par
-
-        // Marcamos el bucket como NULL
-        map->buckets[map->current] = NULL;
-
-        // Decrementamos el tamaño de la tabla
-        map->size--;
-
-        // Después de la eliminación, puedes reordenar la tabla si usas colisiones abiertas.
-        // Aquí deberías mover los elementos siguientes si están en colisiones.
-        for (long i = (map->current + 1) % map->capacity; map->buckets[i] != NULL; i = (i + 1) % map->capacity) {
-            long pos = hash(map->buckets[i]->key, map->capacity);
-            if ((pos + i) % map->capacity == map->current) {
-                // Esto significa que hemos pasado por todos los elementos relevantes.
-                break;
-            }
-            map->buckets[map->current] = map->buckets[i];
-            map->buckets[i] = NULL;
-            map->current = i;
-        }
+        free(pair->key);  // Liberar la memoria de la clave si fue asignada dinámicamente.
+        free(pair);       // Liberar la memoria del par (Pair).
+        map->buckets[map->current] = NULL;  // Marcar el bucket como NULL (eliminación efectiva).
+        map->size--;  // Disminuir el tamaño de la tabla.
     }
 }
+
 
 // Función para buscar un par (clave-valor) en el mapa
 Pair *searchMap(HashMap *map, char *key) {
