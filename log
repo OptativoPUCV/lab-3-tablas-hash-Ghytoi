@@ -34,3 +34,17 @@ Sun, Apr 20, 2025  5:11:42 PM:
  tests:  14|1
 total_score: 60/70
 5d78efd
+Sun, Apr 20, 2025  5:15:05 PM: 
+ hashmap.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:4:
+hashmap.c: In function 'eraseMap':
+hashmap.c:118:26: error: expected expression before ']' token
+  118 |             map->buckets[] = NULL;
+      |                          ^
+test.c: At top level:
+test.c:8:8: warning: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Wattributes]
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+c588e7f

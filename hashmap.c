@@ -108,16 +108,19 @@ HashMap *createMap(long capacity) {
 }
 
 // Función para eliminar una key de la tabla y su valor
-void eraseMap(HashMap * map, char * key) {    
-    Pair * pair = searchMap(map, key);
+void eraseMap(HashMap * map, char * key) {
+    
+    if (map != NULL && key != NULL)
+    {
+        Pair * pair = searchMap(map, key);
 
-    if (pair != NULL) {
-        map->buckets[map->current] = NULL; 
-        map->size--;
-        free(pair); 
+        if (pair != NULL) {
+            map->buckets[] = NULL; 
+            map->size--;
+            free(pair); 
+        }
     }
 }
-
 
 // Función para buscar un par (clave-valor) en el mapa
 Pair *searchMap(HashMap *map, char *key) {
